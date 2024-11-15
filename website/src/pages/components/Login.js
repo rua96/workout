@@ -1,7 +1,7 @@
 import "../../styles/Login.css";
 import React from "react";
 
-function Login() {
+function Login(props) {
   return (
     <div className="loginContainer">
       <h1 className="mainTitle">WORKOUT</h1>
@@ -11,7 +11,7 @@ function Login() {
           LOGIN
         </h2>
         <div className="mailogin">
-          <h4 className="hmailpassword">email o username : </h4>
+          <h4 className="hmaillogin">email o username : </h4>
           <input
             className="inputEmail"
             type="text"
@@ -19,7 +19,7 @@ function Login() {
           />
         </div>
         <div className="passwordlogin">
-          <h4 className="hmailpassword">password : </h4>
+          <h4 className="hpasswordlogin">password : </h4>
           <input
             className="inputPassword"
             type="password"
@@ -32,7 +32,11 @@ function Login() {
         </button>
         <p className="notalreadyAccount">
           Non hai ancora un account?
-          <button className="buttonIscriviti" type="button">
+          <button
+            className="buttonIscriviti"
+            type="button"
+            onClick={() => props.changeToSignUp()}
+          >
             Iscriviti
           </button>
         </p>

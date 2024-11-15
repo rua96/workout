@@ -1,7 +1,31 @@
 import "../../styles/SignUp.css";
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
-function SignUp() {
+function SignUp(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onSignUp = async (e) => {
+    e.preventDefault();
+
+    console.log(email, password);
+
+    let response = await axios.post(
+      process.env.REACT_APP_SERVER_URL + "/users",
+      {
+        email: email,
+        password: password,
+      }
+    );
+    if (response?.data?.error) {
+      toast.error("ERROR");
+    } else {
+      toast.success("Utente Creato!");
+    }
+  };
+
   return (
     <div className="signUpContainer">
       <h1 className="mainTitle">WORKOUT</h1>
@@ -11,25 +35,31 @@ function SignUp() {
           SIGN-UP
         </h2>
         <div className="passmailsignup">
-          <h4 className="hmailpassword">email : </h4>
+          <h4 className="hmailsignup">email : </h4>
           <input
             className="inputEmail"
             type="text"
-            placeholder="Email o Username"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <h4 className="hmailpassword">password : </h4>
+          <h4 className="hpasswordsignup">password : </h4>
           <input
             className="inputPassword"
             type="password"
             placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button className="buttonSignUp" type="submit">
+        <button className="buttonSignUp" onClick={onSignUp}>
           SIGN UP
         </button>
         <p className="alreadyAccount">
           Hai già un account?
-          <button className="buttonEffettuaLogin" type="button">
+          <button
+            className="buttonEffettuaLogin"
+            type="button"
+            onClick={() => props.changeToLogin()}
+          >
             Effettua il Login
           </button>
         </p>

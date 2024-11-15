@@ -1,11 +1,12 @@
 const express = require("express"); // perchè stiamo utilizzando un server express
 const server = express(); // usiamo server perchè è il nome con il quale abbiamo chiamato il nostro server
 const cors = require("cors"); // per poter usare server e website nello stesso pc. In questa riga lo stiamo importando dopo aver scaricato la libreria (npm i cors)
-
+const usersRouter = require("./routes/users"); //sto definendo il Router nel server
 const database = require("./models"); // sincronizza le nostre tabelle con il database
 
 server.use(cors()); // aggiungiamo cors al server
 server.use(express.json()); //per dire al server che usiamo json
+server.use("/users", usersRouter);
 
 database.sequelize.sync().then(() => {
   server.listen(5555, () => {

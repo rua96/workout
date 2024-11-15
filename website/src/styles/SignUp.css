@@ -51,13 +51,22 @@
   width: 100px;
   height: auto;
 }
-/* Titoli h4 (Email, Username, Password) */
-.hmailpassword {
+.hmailsignup {
+  display: flex;
   margin-left: 15px;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   color: #000;
-  margin-bottom: 0px; /* Spazio tra il titolo e l'input */
+  margin-bottom: 0;
+  align-self: flex-start; /* Allineamento a sinistra per il testo */
+}
+.hpasswordsignup {
+  display: flex;
+  margin-left: 15px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 5px;
   align-self: flex-start; /* Allineamento a sinistra per il testo */
 }
 
@@ -132,4 +141,7 @@
 }
 
 @media only screen and (orientation: portrait) {
+}
+
+@media only screen and (orientation: landscape) {
 }
