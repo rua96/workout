@@ -3,6 +3,8 @@ const router = express.Router();
 const Validation = require("../services/Validation");
 const { users } = require("../models");
 const bcrypt = require("bcrypt");
+const { sign } = require("jsonwebtoken");
+const { validateToken } = require("../middlewares/Authentication");
 
 router.post("/", async (req, res) => {
   const { email, password, username } = req.body;
@@ -44,11 +46,11 @@ router.post("/", async (req, res) => {
     return res.json({ error: e });
   }
 });
-/*
+
 router.post("/login", async (req, res) => {
   const { email, password, username } = req.body;
 
-  if (!email && !username) {
+  if ((!email && !username) || !password) {
     return res.json({ error: "Invalid Input" });
   }
 
@@ -100,6 +102,6 @@ router.get("/auth", validateToken, async (req, res) => {
   if (req.user) {
     return res.json({ user: req.user });
   }
-}); */
+});
 
 module.exports = router;

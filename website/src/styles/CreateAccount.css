@@ -112,7 +112,87 @@
 }
 
 @media only screen and (orientation: portrait) {
-}
+  .CreateAccountContainer {
+    padding: 0; /* Rimuoviamo il padding aggiuntivo */
+    margin: 0; /* Rimuoviamo il margine che potrebbe essere presente */
+    min-height: 100vh; /* Usa min-height per garantire che il contenitore occupi almeno l'altezza della finestra */
+    background-size: cover; /* Assicuriamoci che l'immagine copra l'intero contenitore */
+    background-position: center; /* Centra l'immagine */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .mainTitle {
+    font-size: 36px;
+  }
+  .CreateAccountCard {
+    width: 90%;
+    padding: 15px;
+    margin-bottom: 20px; /* Distanza dal fondo */
+  }
 
-@media only screen and (orientation: landscape) {
+  .CreateAccountTitle {
+    font-size: 24px;
+  }
+  .CreateAccountTitle img {
+    top: 70px;
+    width: 70px;
+  }
+
+  .inputusernameCreate {
+    font-size: 16px;
+  }
+  .husername {
+    font-size: 12px;
+  }
+  .hnameCreate {
+    font-size: 12px;
+  }
+  .inputName {
+    width: 70%;
+    font-size: 16px;
+  }
+
+  .button.CreateAccount {
+    height: 40px;
+    font-size: 20px;
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 768px) {
+  .CreateAccountContainer {
+    padding: 0; /* Rimuoviamo il padding aggiuntivo */
+    margin: 0; /* Rimuoviamo il margine che potrebbe essere presente */
+    min-height: 100vh; /* Usa min-height per garantire che il contenitore occupi almeno l'altezza della finestra */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-size: cover; /* Assicuriamoci che l'immagine copra l'intero contenitore */
+    background-position: center; /* Centra l'immagine */
+  }
+
+  .CreateAccountcard {
+    width: 80%;
+    padding: 20px;
+  }
+
+  .mainTitle {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+
+  .CreateAccountTitle {
+    font-size: 26px;
+  }
+
+  .inputEmail,
+  .inputPassword {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .buttonCreateAccount {
+    width: 60%;
+    height: 45px;
+    font-size: 22px;
+  }
 }

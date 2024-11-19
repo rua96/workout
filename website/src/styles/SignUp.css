@@ -141,7 +141,101 @@
 }
 
 @media only screen and (orientation: portrait) {
+  .signUpContainer {
+    padding: 0; /* Rimuoviamo il padding aggiuntivo */
+    margin: 0; /* Rimuoviamo il margine che potrebbe essere presente */
+    min-height: 100vh; /* Usa min-height per garantire che il contenitore occupi almeno l'altezza della finestra */
+    background-size: cover; /* Assicuriamoci che l'immagine copra l'intero contenitore */
+    background-position: center; /* Centra l'immagine */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .signUpCard {
+    width: 90%;
+    padding: 15px;
+    margin-bottom: 20px; /* Distanza dal fondo */
+  }
+
+  .mainTitle {
+    font-size: 36px;
+  }
+
+  .signupTitle {
+    font-size: 24px;
+  }
+  .signupTitle img {
+    top: 10px;
+  }
+
+  .inputEmail,
+  .inputPassword {
+    font-size: 18px;
+    padding: 8px;
+  }
+
+  .buttonSignUp {
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .alreadyAccount {
+    font-size: 20px;
+    flex-direction: column;
+  }
+
+  .buttonEffettuaLogin {
+    font-size: 22px;
+    margin-top: 10px;
+  }
 }
 
-@media only screen and (orientation: landscape) {
+@media only screen and (orientation: landscape) and (max-width: 768px) {
+  .signUpContainer {
+    padding: 0; /* Rimuoviamo il padding aggiuntivo */
+    margin: 0; /* Rimuoviamo il margine che potrebbe essere presente */
+    min-height: 100vh; /* Usa min-height per garantire che il contenitore occupi almeno l'altezza della finestra */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-size: cover; /* Assicuriamoci che l'immagine copra l'intero contenitore */
+    background-position: center; /* Centra l'immagine */
+  }
+
+  .signUpCard {
+    width: 80%;
+    padding: 20px;
+  }
+
+  .mainTitle {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+
+  .signupTitle {
+    font-size: 26px;
+  }
+
+  .inputEmail,
+  .inputPassword {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .buttonSignUp {
+    width: 60%;
+    height: 45px;
+    font-size: 22px;
+  }
+
+  .alreadyAccount {
+    font-size: 22px;
+    flex-direction: row;
+  }
+
+  .buttonEffettuaLogin {
+    font-size: 20px;
+    margin-left: 5px;
+  }
 }
