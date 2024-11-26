@@ -71,7 +71,6 @@ router.post("/login", async (req, res) => {
   if (!user) {
     return res.json({ error: "Account does not exist" });
   }
-
   // match password;
 
   bcrypt.compare(password, user.password).then(async (match) => {
@@ -85,6 +84,7 @@ router.post("/login", async (req, res) => {
         username: user.username,
         id: user.id,
         status: true,
+        livello: user.livello,
       },
       process.env.AUTH_SECRET
     );
@@ -94,7 +94,68 @@ router.post("/login", async (req, res) => {
       id: user.id,
       username: user.username,
       status: true,
+      livello: user.livello,
     });
+  });
+});
+
+router.post("/details", validateToken, async (req, res) => {
+  const { username, name, cognome, peso, altezza, sesso, livello, email } =
+    req.body;
+
+  if (
+    !username ||
+    !name ||
+    !cognome ||
+    !peso ||
+    !altezza ||
+    !sesso ||
+    !livello ||
+    !email
+  ) {
+    return res.json({ error: "Invalid Input" });
+  }
+
+  let user = await users.findOne({
+    where: {
+      username: username,
+    },
+  });
+
+  console.log("USER", user);
+
+  if (user) {
+    return res.json({ error: "Utente esiste già" });
+  }
+
+  const profile = await users.update(
+    {
+      username: username,
+      name: name,
+      cognome: cognome,
+      peso: peso,
+      altezza: altezza,
+      sesso: sesso,
+      livello: livello,
+    },
+    {
+      where: {
+        email: email,
+      },
+    }
+  );
+
+  const token = sign(
+    {
+      ...req.user,
+      livello: livello,
+    },
+    process.env.AUTH_SECRET
+  );
+
+  return res.json({
+    token: token,
+    user: profile,
   });
 });
 

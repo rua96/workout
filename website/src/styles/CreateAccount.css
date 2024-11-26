@@ -84,7 +84,6 @@
 }
 .inputName {
   width: 200px;
-  height: 30px;
   padding: 10px;
   font-size: 20px;
   color: #000;
@@ -133,10 +132,6 @@
 
   .CreateAccountTitle {
     font-size: 24px;
-  }
-  .CreateAccountTitle img {
-    top: 70px;
-    width: 70px;
   }
 
   .inputusernameCreate {

@@ -40,10 +40,10 @@ function Login(props) {
       setAuth({
         email: response?.data?.email,
         username: response?.data?.username,
+        livello: response?.data?.livello,
       });
       localStorage.setItem("AuthToken", response?.data?.authToken);
       navigate("/home");
-      toast.success("You have logged in!");
     }
   };
 

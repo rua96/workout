@@ -20,7 +20,7 @@ function SignUp(props) {
       }
     );
     if (response?.data?.error) {
-      toast.error("ERROR");
+      toast.error(response.data.error);
     } else {
       toast.success("Utente Creato!");
     }

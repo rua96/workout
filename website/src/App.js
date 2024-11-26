@@ -3,7 +3,7 @@ import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import logo from "./logo.svg";
 import "./App.css";
-import Home from "./pages/components/Home";
+import Home from "./pages/Home";
 import Entry from "./pages/Entry";
 import { AuthContext } from "./services/AuthContext";
 import { useEffect } from "react";
@@ -14,6 +14,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { PrivateRoute } from "./services/PrivateRoute";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [auth, setAuth] = useState(null);
