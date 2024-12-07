@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
-import logo from "./logo.svg";
 import "./App.css";
 import Home from "./pages/Home";
 import Entry from "./pages/Entry";
+import Menu from "./pages/components/Menu";
+import CreateScheda from "./pages/components/CreateScheda";
 import { AuthContext } from "./services/AuthContext";
 import { useEffect } from "react";
 import {
@@ -60,6 +61,8 @@ function App() {
             <Route path="/home" element={<PrivateRoute />}>
               <Route path="/home" element={<Home />} />
             </Route>
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/create-scheda" element={<CreateScheda />} />
             <Route path="*" element={<Entry />} />
           </Routes>
         </Router>

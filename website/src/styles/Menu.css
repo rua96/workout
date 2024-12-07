@@ -1,0 +1,74 @@
+.buttonLogout {
+  width: 150px;
+  height: 50px;
+  margin-top: 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.imma {
+  display: block;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+.buttonCreaScheda {
+  width: 150px;
+  height: 50px;
+  margin-top: 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.buttonHome {
+  width: 150px;
+  height: 50px;
+  margin-top: 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.divLogCre {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  height: 10vh;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+}

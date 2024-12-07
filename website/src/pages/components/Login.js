@@ -38,6 +38,7 @@ function Login(props) {
       toast.error(response.data.error);
     } else if (response?.data?.status) {
       setAuth({
+        id: response?.data?.id,
         email: response?.data?.email,
         username: response?.data?.username,
         livello: response?.data?.livello,
@@ -51,10 +52,7 @@ function Login(props) {
     <div className="loginContainer">
       <h1 className="mainTitle">WORKOUT</h1>
       <div className="loginCard">
-        <h2 className="loginTitle">
-          <img src={require("../../assets/logo.png")} alt="Logo" />
-          LOGIN
-        </h2>
+        <h2 className="loginTitle">LOGIN</h2>
         <div className="mailogin">
           <h4 className="hmaillogin">email o username : </h4>
           <input

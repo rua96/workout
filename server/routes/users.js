@@ -47,6 +47,34 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.patch("/", validateToken, async (req, res) => {
+  const { livello, id } = req.body;
+
+  let updatedUser = await users.update(
+    {
+      livello: livello,
+    },
+    {
+      where: {
+        id: id,
+      },
+    }
+  );
+
+  const token = sign(
+    {
+      ...req.user,
+      livello: livello,
+    },
+    process.env.AUTH_SECRET
+  );
+
+  return res.json({
+    token: token,
+    user: updatedUser,
+  });
+});
+
 router.post("/login", async (req, res) => {
   const { email, password, username } = req.body;
 

@@ -30,10 +30,7 @@ function SignUp(props) {
     <div className="signUpContainer">
       <h1 className="mainTitle">WORKOUT</h1>
       <div className="signUpCard">
-        <h2 className="signupTitle">
-          <img src={require("../../assets/logo.png")} alt="Logo" />
-          SIGN-UP
-        </h2>
+        <h2 className="signupTitle">SIGN-UP</h2>
         <div className="passmailsignup">
           <h4 className="hmailsignup">email : </h4>
           <input
