@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import "../../styles/CreateScheda.css";
 import esercizi from "../../services/Esercizi.json";
@@ -9,75 +9,94 @@ import { AuthContext } from "../../services/AuthContext";
 function CreateScheda() {
   const { auth } = useContext(AuthContext);
   const [listaEsercizi, setListaEsercizi] = useState([
-    { nome: "", setReps: "", note: "", rest: "" },
+    { esercizio: "", setReps: "", notes: "", rest: "" },
   ]);
   const [schedaSelezionata, setSchedaSelezionata] = useState("A");
   const [settimanaSelezionata, setSettimanaSelezionata] =
     useState("settimana1");
 
-  const cambiaScheda = (e) => {
-    setSchedaSelezionata(e.target.value);
-    setListaEsercizi([{ nome: "", setReps: "", note: "", rest: "" }]);
-  };
-  const cambiaSettimana = (e) => {
-    setSettimanaSelezionata(e.target.value);
-    setListaEsercizi([{ nome: "", setReps: "", note: "", rest: "" }]);
-  };
-
-  const aggiungiEsercizio = () => {
-    setListaEsercizi([
-      ...listaEsercizi,
-      { nome: "", setReps: "", note: "", rest: "" },
-    ]);
-  };
-  const salvaScheda = async () => {
-    const schedaDaSalvare = {
-      userId: auth.id,
-      scheda: schedaSelezionata,
-      settimana: settimanaSelezionata,
-      esercizi: listaEsercizi.filter((esercizio) => esercizio.nome !== ""),
-    };
-
-    console.log("Scheda da salvare:", schedaDaSalvare);
-
+  // Funzione per caricare i dati salvati della scheda
+  const caricaSchedaSalvata = async () => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_URL}/createscheda`,
-        schedaDaSalvare,
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/createScheda/${auth.id}`, // Assicurati che questa route restituisca la scheda dell'utente
         {
           headers: { authToken: localStorage.getItem("AuthToken") },
         }
       );
 
-      // Logga la risposta del server
-      console.log("Risposta del server:", response.data);
-
-      if (response.status === 200) {
-        toast.success("Scheda salvata con successo!");
-      } else {
-        toast.error("Errore nel salvataggio della scheda.");
+      if (response?.data?.scheda) {
+        let schede = response.data.scheda.filter((scheda) => {
+          return scheda.lettera == schedaSelezionata;
+        });
+        if (schede.length > 0) {
+          let scheda = schede[0];
+          console.log(scheda);
+          setListaEsercizi(scheda.exercises);
+        }
       }
     } catch (error) {
-      console.error("Errore nel salvataggio:", error);
-      toast.error("Errore durante la richiesta al server.");
+      console.error("Errore nel caricamento della scheda:", error);
+      toast.error("Errore durante il recupero della scheda.");
     }
   };
 
-  const rimuoviEsercizio = (index) => {
-    const nuovaLista = listaEsercizi.filter((_, i) => i !== index);
-    setListaEsercizi(nuovaLista);
-  };
+  // Chiamare caricaSchedaSalvata() al caricamento della pagina
+  useEffect(() => {
+    caricaSchedaSalvata();
+  }, []); // L'array di dipendenze è vuoto, quindi questa funzione si chiamerà solo al primo caricamento del componente
 
+  // Funzione per aggiornare esercizi
   const aggiornaEsercizio = (index, campo, valore) => {
     const nuovaLista = [...listaEsercizi];
     nuovaLista[index][campo] = valore;
     setListaEsercizi(nuovaLista);
   };
 
-  const eserciziFiltrati = esercizi.filter(
-    (ex) =>
-      ex.scheda === schedaSelezionata && ex.settimana === settimanaSelezionata
-  );
+  // Aggiungere esercizi
+  const aggiungiEsercizio = () => {
+    setListaEsercizi([
+      ...listaEsercizi,
+      { esercizio: "", setReps: "", notes: "", rest: "" },
+    ]);
+  };
+
+  const salvaScheda = async () => {
+    const schedaDaSalvare = {
+      userId: auth.id,
+      scheda: schedaSelezionata,
+      settimana: settimanaSelezionata,
+      esercizi: listaEsercizi.filter((esercizio) => esercizio.esercizio !== ""),
+    };
+
+    if (
+      listaEsercizi.filter((esercizio) => {
+        return esercizio.id != null;
+      }).length > 0
+    ) {
+      await axios.patch(
+        `${process.env.REACT_APP_SERVER_URL}/createscheda`,
+        schedaDaSalvare,
+        {
+          headers: { authToken: localStorage.getItem("AuthToken") },
+        }
+      );
+    } else {
+      try {
+        await axios.post(
+          `${process.env.REACT_APP_SERVER_URL}/createscheda`,
+          schedaDaSalvare,
+          {
+            headers: { authToken: localStorage.getItem("AuthToken") },
+          }
+        );
+        toast.success("Scheda salvata con successo!");
+      } catch (error) {
+        console.error("Errore nel salvataggio:", error);
+        toast.error("Errore durante il salvataggio della scheda.");
+      }
+    }
+  };
 
   return (
     <div className="sfondo">
@@ -87,7 +106,7 @@ function CreateScheda() {
           <select
             className="inputSettimanaCreate"
             value={schedaSelezionata}
-            onChange={cambiaScheda}
+            onChange={(e) => setSchedaSelezionata(e.target.value)}
           >
             <option value="A">Scheda A</option>
             <option value="B">Scheda B</option>
@@ -96,7 +115,7 @@ function CreateScheda() {
           <select
             className="inputSettimanaCreate"
             value={settimanaSelezionata}
-            onChange={cambiaSettimana}
+            onChange={(e) => setSettimanaSelezionata(e.target.value)}
           >
             <option value="settimana1">Settimana 1</option>
             <option value="settimana2">Settimana 2</option>
@@ -120,21 +139,25 @@ function CreateScheda() {
               <div className="figlioCreate">
                 <select
                   className="inputSettimanaCreate"
-                  value={esercizio.nome}
+                  value={esercizio.esercizio}
                   onChange={(e) =>
-                    aggiornaEsercizio(index, "nome", e.target.value)
+                    aggiornaEsercizio(index, "esercizio", e.target.value)
                   }
                 >
                   <option value="">Seleziona un esercizio</option>
                   {esercizi.map((ex, idx) => (
-                    <option key={idx} value={ex.nome}>
-                      {ex.nome}
+                    <option key={idx} value={ex.esercizio}>
+                      {ex.esercizio}
                     </option>
                   ))}
                 </select>
                 <button
                   className="buttonRemove"
-                  onClick={() => rimuoviEsercizio(index)}
+                  onClick={() =>
+                    setListaEsercizi(
+                      listaEsercizi.filter((_, i) => i !== index)
+                    )
+                  }
                 >
                   Rimuovi
                 </button>
@@ -143,13 +166,13 @@ function CreateScheda() {
                 <a
                   className="youfiglioCreate"
                   href={
-                    esercizi.find((ex) => ex.nome === esercizio.nome)?.link ||
-                    "#"
+                    esercizi.find((ex) => ex.esercizio === esercizio.esercizio)
+                      ?.link || "#"
                   }
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {esercizio.nome ? "Guarda il video" : "Nessun video"}
+                  {esercizio.esercizio ? "Guarda il video" : "Nessun video"}
                 </a>
               </div>
               <div className="figlioCreate">
@@ -166,9 +189,9 @@ function CreateScheda() {
               <textarea
                 className="figliotextareaCreate"
                 placeholder="Pesi utilizzati"
-                value={esercizio.note}
+                value={esercizio.notes}
                 onChange={(e) =>
-                  aggiornaEsercizio(index, "note", e.target.value)
+                  aggiornaEsercizio(index, "notes", e.target.value)
                 }
               ></textarea>
               <div className="figlioCreate">

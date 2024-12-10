@@ -28,6 +28,11 @@ module.exports = (sequelize, datatypes) => {
       allowNull: false,
       unique: false,
     },
+    status: {
+      type: datatypes.STRING,
+      allowNull: true,
+      unique: false,
+    },
   });
 
   exercise.associate = (models) => {
