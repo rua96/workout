@@ -1,84 +1,15 @@
 [
   {
-    "esercizio": "Deadlift DB",
-    "link": "https://www.youtube.com/watch?v=plb5jEO4Unw"
-  },
-  {
-    "esercizio": "Pulley",
-    "link": "https://www.youtube.com/watch?v=HIrH8XOhbrc"
-  },
-  {
-    "esercizio": "Military Press BB",
-    "link": "https://www.youtube.com/watch?v=IuzRCN6eG6Y"
-  },
-  {
-    "esercizio": "Military Press DB",
-    "link": "https://www.youtube.com/watch?v=0rChzYPyuYI"
-  },
-  {
-    "esercizio": "Shrugs",
-    "link": "https://www.youtube.com/watch?v=yqzRYcOMx2Q"
-  },
-  {
-    "esercizio": "French Press Ez Bar",
-    "link": "https://www.youtube.com/watch?v=xBzKgvYBxI4"
-  },
-  {
-    "esercizio": "Lateral Raises",
-    "link": "https:/www.youtube.com/watch?v=axW4JQUOlFA"
-  },
-
-  {
-    "esercizio": "French Press DB",
-    "link": "https://www.youtube.com/watch?v=vS_lKYyyWkA"
-  },
-  {
-    "esercizio": "Dip",
-    "link": "https://www.youtube.com/watch?v=rXeyNuQ58wU"
-  },
-  {
-    "esercizio": "Side Plank",
-    "link": "https://www.youtube.com/watch?v=_R389Jk0tIo"
-  },
-  {
-    "esercizio": "Squat",
-    "link": "https://youtu.be/-bJIpOq-LWk?feature=shared"
-  },
-  {
-    "esercizio": "Leg Curl",
-    "link": "https://www.youtube.com/watch?v=SiwJ_T62l9c"
-  },
-  {
-    "esercizio": "Let Machine",
-    "link": "https://youtu.be/AkRfptSYvLo?feature=shared"
-  },
-  {
-    "esercizio": "Chin Up",
-    "link": "https://www.youtube.com/watch?v=xBzKgvYBxI4"
-  },
-  {
-    "esercizio": "Crunch",
-    "link": "https://www.youtube.com/watch?v=Iep9ffXKQHw"
-  },
-  {
-    "esercizio": "Plank",
-    "link": "https://www.youtube.com/watch?v=N_s9em1xTqU"
+    "esercizio": "Alzate Laterali",
+    "link": "https://www.youtube.com/watch?v=7xe8l-8zBOo"
   },
   {
     "esercizio": "Bench Press BB",
     "link": "https://www.youtube.com/watch?v=SCVCLChPQFY"
   },
   {
-    "esercizio": "Peck Deck",
-    "link": "https://www.youtube.com/watch?v=lSV3-8mlUnc"
-  },
-  {
-    "esercizio": "Curl DB panca inclinata",
-    "link": "https://www.youtube.com/watch?v=a1VJvIFPObk"
-  },
-  {
-    "esercizio": "Hummer Curl",
-    "link": "https://www.youtube.com/watch?v=CFBZ4jN1CMI"
+    "esercizio": "Bench Press DB",
+    "link": "https://www.youtube.com/watch?v=AduT4Eq-iP0"
   },
   {
     "esercizio": "Bicycle Crunch",
@@ -89,63 +20,129 @@
     "link": "https://www.youtube.com/watch?v=HSGjUouQZCQ"
   },
   {
-    "esercizio": "Push Up",
-    "link": "https://www.youtube.com/watch?v=_l3ySVKYVJ8"
-  },
-  {
-    "esercizio": "Hummer Curl",
-    "link": "https://www.youtube.com/watch?v=CFBZ4jN1CMI"
-  },
-  {
-    "esercizio": "Push Down",
-    "link": "https://www.youtube.com/watch?v=5XjpecNSJbg"
-  },
-  {
-    "esercizio": "Deadlift BB",
-    "link": "https://www.youtube.com/watch?v=CN_7cz3P-1U"
-  },
-  {
-    "esercizio": "Bench Press DB",
-    "link": "https://www.youtube.com/watch?v=AduT4Eq-iP0"
-  },
-  {
     "esercizio": "Chest Fly DB",
     "link": "https://www.youtube.com/watch?v=Nhvz9EzdJ4U"
+  },
+  {
+    "esercizio": "Chin Up",
+    "link": "https://www.youtube.com/watch?v=xBzKgvYBxI4"
+  },
+  {
+    "esercizio": "Crunch",
+    "link": "https://www.youtube.com/watch?v=Iep9ffXKQHw"
   },
   {
     "esercizio": "Curl DB",
     "link": "https://www.youtube.com/watch?v=HnHuhf4hEWY"
   },
   {
-    "esercizio": "Alzate Laterali",
-    "link": "https://www.youtube.com/watch?v=7xe8l-8zBOo"
-  },
-  {
-    "esercizio": "Lunges",
-    "link": "https://youtu.be/9gglI77Kzq8?feature=shared"
-  },
-  {
-    "esercizio": "Row Barbell",
-    "link": "https://youtu.be/AkRfptSYvLo?feature=shared"
-  },
-  {
-    "esercizio": "HPX",
-    "link": "https://www.youtube.com/watch?v=K3ct5jnkTuo"
-  },
-  {
-    "esercizio": "T BarRows ",
-    "link": "https://www.youtube.com/watch?v=hYo72r8Ivso"
+    "esercizio": "Curl DB panca inclinata",
+    "link": "https://www.youtube.com/watch?v=a1VJvIFPObk"
   },
   {
     "esercizio": "Curl Ez Bar ",
     "link": "https://www.youtube.com/watch?v=-gSM-kqNlUw"
   },
   {
+    "esercizio": "Deadlift BB",
+    "link": "https://www.youtube.com/watch?v=CN_7cz3P-1U"
+  },
+  {
+    "esercizio": "Deadlift DB",
+    "link": "https://www.youtube.com/watch?v=plb5jEO4Unw"
+  },
+  {
+    "esercizio": "Dip",
+    "link": "https://www.youtube.com/watch?v=rXeyNuQ58wU"
+  },
+  {
+    "esercizio": "French Press DB",
+    "link": "https://www.youtube.com/watch?v=vS_lKYyyWkA"
+  },
+  {
+    "esercizio": "French Press Ez Bar",
+    "link": "https://www.youtube.com/watch?v=zQQQ444P588"
+  },
+  {
+    "esercizio": "HPX",
+    "link": "https://www.youtube.com/watch?v=K3ct5jnkTuo"
+  },
+  {
+    "esercizio": "Hummer Curl",
+    "link": "https://www.youtube.com/watch?v=CFBZ4jN1CMI"
+  },
+  {
+    "esercizio": "Lateral Raises",
+    "link": "https:/www.youtube.com/watch?v=axW4JQUOlFA"
+  },
+  {
+    "esercizio": "Leg Curl",
+    "link": "https://www.youtube.com/watch?v=SiwJ_T62l9c"
+  },
+  {
     "esercizio": "Leg Raise ",
     "link": "https://www.youtube.com/watch?v=uSJdZcsrnug"
   },
   {
+    "esercizio": "Let Machine",
+    "link": "https://youtu.be/AkRfptSYvLo?feature=shared"
+  },
+  {
+    "esercizio": "Lunges",
+    "link": "https://youtu.be/9gglI77Kzq8?feature=shared"
+  },
+  {
+    "esercizio": "Military Press BB",
+    "link": "https://www.youtube.com/watch?v=IuzRCN6eG6Y"
+  },
+  {
+    "esercizio": "Military Press DB",
+    "link": "https://www.youtube.com/watch?v=0rChzYPyuYI"
+  },
+  {
+    "esercizio": "Peck Deck",
+    "link": "https://www.youtube.com/watch?v=lSV3-8mlUnc"
+  },
+  {
+    "esercizio": "Plank",
+    "link": "https://www.youtube.com/watch?v=WUk9rd-rI7Y"
+  },
+  {
+    "esercizio": "Pulley",
+    "link": "https://www.youtube.com/watch?v=HIrH8XOhbrc"
+  },
+  {
+    "esercizio": "Push Down",
+    "link": "https://www.youtube.com/watch?v=5XjpecNSJbg"
+  },
+  {
     "esercizio": "Push Down Rope",
     "link": "https://www.youtube.com/watch?v=-xa-6cQaZKY"
+  },
+  {
+    "esercizio": "Push Up",
+    "link": "https://www.youtube.com/watch?v=_l3ySVKYVJ8"
+  },
+  {
+    "esercizio": "Row Barbell",
+    "link": "https://www.youtube.com/watch?v=9Gf-Ourup_k"
+  },
+  {
+    "esercizio": "Shrugs",
+    "link": "https://www.youtube.com/watch?v=yqzRYcOMx2Q"
+  },
+
+  {
+    "esercizio": "Side Plank",
+    "link": "https://www.youtube.com/watch?v=_R389Jk0tIo"
+  },
+  {
+    "esercizio": "Squat",
+    "link": "https://youtu.be/-bJIpOq-LWk?feature=shared"
+  },
+
+  {
+    "esercizio": "T BarRows ",
+    "link": "https://www.youtube.com/watch?v=hYo72r8Ivso"
   }
 ]

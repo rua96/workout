@@ -235,7 +235,7 @@ const esercizi = [
           },
           {
             esercizio: "French Press Ez Bar",
-            link: "https://www.youtube.com/watch?v=xBzKgvYBxI4",
+            link: "https://www.youtube.com/watch?v=zQQQ444P588",
             set: "3 x 10",
             note: "",
             rest: "1' 30''",
@@ -341,7 +341,7 @@ const esercizi = [
           },
           {
             esercizio: "Row Barbell",
-            link: "https://youtu.be/AkRfptSYvLo?feature=shared",
+            link: "https://www.youtube.com/watch?v=9Gf-Ourup_k",
             set: "3 x Max",
             note: "",
             rest: "1'30''",
@@ -409,7 +409,7 @@ const esercizi = [
           },
           {
             esercizio: "French Press Ez Bar",
-            link: "https://www.youtube.com/watch?v=xBzKgvYBxI4",
+            link: "https://www.youtube.com/watch?v=zQQQ444P588",
             set: "4 x 8",
             note: "",
             rest: "1' 30''",

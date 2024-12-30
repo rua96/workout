@@ -11,6 +11,7 @@ server.use("/users", usersRouter);
 const createSchedaRouter = require("./routes/createScheda"); //sto definendo il Router nel server
 server.use("/createScheda", createSchedaRouter);
 
+// Sincronizzazione del database con Sequelize
 database.sequelize.sync().then(() => {
   server.listen(5555, () => {
     // è una funzione sempre di express, e stiamo mettendo il server in stato di ascolto e gli passiamo port ( nel nostro caso 5555) , ()=>{}  questo vuol dire che è una funzione

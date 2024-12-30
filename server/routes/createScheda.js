@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { gymTab, exercise } = require("../models");
 const { validateToken } = require("../middlewares/Authentication");
+const { Op } = require("sequelize");
 
 router.post("/", validateToken, async (req, res) => {
   const { userId, scheda, settimana, esercizi } = req.body;
@@ -10,6 +11,19 @@ router.post("/", validateToken, async (req, res) => {
 
   try {
     // Creazione della scheda
+    // Determina gli esercizi specifici in base alla lettera della scheda (A, B, C)
+    let eserciziPersonalizzati;
+    if (scheda === "A") {
+      eserciziPersonalizzati = esercizi.filter((e) => e.tipo === "forza");
+    } else if (scheda === "B") {
+      eserciziPersonalizzati = esercizi.filter((e) => e.tipo === "resistenza");
+    } else if (scheda === "C") {
+      eserciziPersonalizzati = esercizi.filter((e) => e.tipo === "mobilità");
+    } else {
+      return res.status(400).json({ error: "Tipo di scheda non valido." });
+    }
+
+    // Salva la scheda personalizzata
     let gymtabella = await gymTab.create({
       lettera: scheda,
       userId: userId,
@@ -29,6 +43,7 @@ router.post("/", validateToken, async (req, res) => {
         notes: esercizi[i].note,
         rest: esercizi[i].rest,
         gymTabId: gymtabella.id,
+        status: "active",
       });
 
       // Logga ogni esercizio creato
@@ -54,6 +69,7 @@ router.post("/", validateToken, async (req, res) => {
 });
 
 router.get("/:userId", validateToken, async (req, res) => {
+  //qui prendo gli esercizi
   const { userId } = req.params;
 
   let schede = await gymTab.findAll({
@@ -65,6 +81,11 @@ router.get("/:userId", validateToken, async (req, res) => {
         model: exercise,
         separate: true, // Esegue una query separata per gli esercizi
         order: [["createdAt", "ASC"]], // Ordina per data di creazione in ordine crescente
+        where: {
+          status: {
+            [Op.ne]: "deleted",
+          },
+        },
       },
     ],
   });
@@ -99,6 +120,7 @@ router.patch("/", validateToken, async (req, res) => {
             setReps: esercizio.setReps,
             notes: esercizio.notes,
             rest: esercizio.rest,
+            status: "active",
           },
           {
             where: { id: esercizio.id },
@@ -112,6 +134,7 @@ router.patch("/", validateToken, async (req, res) => {
           notes: esercizio.notes,
           rest: esercizio.rest,
           gymTabId: schedaCreata.id,
+          status: "active",
         });
       }
     }
@@ -134,7 +157,7 @@ router.patch("/", validateToken, async (req, res) => {
     });
   }
 });
-
+//nel get non posso passare un body perchè nel post cerco di mandare dati, invece get prende i dati. quindi non sto mandando dati.
 // **Nuova parte per cancellare l'esercizio**
 router.delete("/esercizio/:id", validateToken, async (req, res) => {
   const { id } = req.params;
@@ -151,9 +174,14 @@ router.delete("/esercizio/:id", validateToken, async (req, res) => {
     }
 
     // Cancella l'esercizio
-    await exercise.destroy({
-      where: { id: id },
-    });
+    await exercise.update(
+      {
+        status: "deleted",
+      },
+      {
+        where: { id: id },
+      }
+    );
 
     return res.status(200).json({ message: "Esercizio rimosso con successo" });
   } catch (error) {

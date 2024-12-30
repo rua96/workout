@@ -18,10 +18,11 @@
 
 .imma {
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
 }
+
 .buttonCreaScheda {
   width: 150px;
   height: 50px;
@@ -58,17 +59,33 @@
   cursor: pointer;
 }
 .divLogCre {
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   padding: 10px;
   border-radius: 10px;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* Posizionamento */
   position: fixed;
-  height: 10vh;
   top: 0;
   left: 0;
-  margin: 0 auto;
+  /* Dimensioni */
+  width: 100%; /* Usa il 100% invece di 100vw per evitare lo scroll orizzontale */
+  max-width: 100%; /* Previene eventuali overflow */
+  height: 10vh;
+  /* Box Model */
+  box-sizing: border-box; /* Assicura che padding non influisca sulla larghezza */
+  margin: 0;
+  overflow: hidden; /* Evita possibili scroll */
+}
+
+/* Adattamenti per dispositivi mobili */
+@media (max-width: 768px) {
+  .divLogCre {
+    height: 12vh; /* Leggermente più alto su schermi piccoli */
+    gap: 10px;
+    padding: 5px;
+  }
 }

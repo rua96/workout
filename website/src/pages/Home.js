@@ -7,10 +7,10 @@ import Scheda from "./components/Scheda";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const { auth, setAuth } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
   const [menu, setMenu] = useState("Show");
-  const { login } = useContext(AuthContext);
+
   /*const onLogout = () => {
     localStorage.removeItem("AuthToken");
     navigate("/entry");

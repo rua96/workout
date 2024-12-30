@@ -1,3 +1,4 @@
+/* 🔄 Reset di Base */
 * {
   margin: 0;
   padding: 0;
@@ -8,148 +9,147 @@ html,
 body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden; /* Evita lo scroll orizzontale */
+  overflow-x: hidden; /* Evita lo scroll orizzontale generale */
 }
 
-/* Personalizza la larghezza della scrollbar */
+/* 📊 Scrollbar Personalizzata */
 .nonno::-webkit-scrollbar {
-  width: 10px; /* Larghezza della scrollbar verticale */
-  height: 8px; /* Altezza della scrollbar orizzontale */
+  width: 10px; /* Scroll verticale */
+  height: 8px; /* Scroll orizzontale */
 }
 
-/* Stile per la traccia della scrollbar */
 .nonno::-webkit-scrollbar-track {
-  background: rgba(200, 200, 200, 0.3); /* Colore della traccia */
+  background: rgba(200, 200, 200, 0.3);
   border-radius: 10px;
 }
 
-/* Stile per il cursore (thumb) */
 .nonno::-webkit-scrollbar-thumb {
-  background: rgba(40, 81, 226, 0.8); /* Colore del cursore */
-  border-radius: 10px; /* Arrotonda gli angoli */
-  border: 2px solid rgba(0, 0, 0, 0.2); /* Bordo del cursore */
+  background: rgba(40, 81, 226, 0.8);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
-.schedaContainer {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background: url("../assets/sfondoWorkout.jpg") center/cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 5px;
-  margin: 0;
-  padding: 0;
-}
-
+/* 📦 Contenitore Principale */
 .bisnonno {
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  justify-content: center;
   align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  margin: 10vh auto;
+  padding: 25px;
+  max-width: 100vw;
   background: rgba(70, 154, 180, 0.6);
   backdrop-filter: blur(7.5px);
   border-radius: 15px;
-  margin-top: 15vh;
+  overflow-x: auto; /* Permette lo scorrimento orizzontale se necessario */
+  margin-top: 12vh;
+  box-sizing: border-box;
 }
-.inputSettimana {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #d0d0e7;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 20px;
-  color: #333;
-  font-weight: bold;
-}
-.schede {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #d0d0e7;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 15px;
-  color: #333;
-}
+
+/* 📑 Selezione Dropdown */
 .genitoreschede {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 5px;
-}
-
-.nonno {
-  display: grid;
-  grid-template-rows: auto;
-  border-radius: 10px;
-  padding: 25px;
-  max-height: 70vh;
-  overflow-y: auto;
-  width: 100%;
-}
-
-.genitore {
-  display: grid;
-  grid-template-columns: 0.7fr 0.4fr 0.5fr 0.7fr 0.6fr;
-  gap: 2px;
-  background-color: rgba(75, 179, 197, 0.9);
-  padding: 1px;
-  border-radius: 8px;
-  gap: 3px;
-  margin-bottom: 2px;
-  max-width: 60vw;
-  width: 100%;
-}
-
-.figlio {
   display: flex;
+  gap: 15px;
+  flex-wrap: wrap; /* Evita sovrapposizione su schermi piccoli */
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
-  background-color: #d0d0e7;
-  padding: 5px;
-  font-size: 15px;
-  color: #333;
-  font-weight: bold;
 }
+
+.inputSettimana {
+  background-color: #d0d0e7;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.inputSettimana:focus {
+  border-color: #15a796;
+}
+
+/* 📊 Tabella Esercizi */
+.eserciziTableContainer {
+  width: 100%;
+  overflow-x: auto; /* Scroll orizzontale se necessario */
+  margin-top: 10px;
+}
+
+.eserciziTable {
+  width: max-content;
+  border-collapse: collapse;
+  font-size: 14px;
+  border-radius: 5px;
+  overflow: hidden;
+  border-spacing: 0;
+}
+
+.eserciziTable th,
+.eserciziTable td {
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #ddd;
+  min-width: 100px;
+  white-space: nowrap; /* Evita il wrapping del testo */
+}
+
+.eserciziTable th {
+  background-color: #15a796;
+  color: white;
+}
+
+.eserciziTable td {
+  background-color: #d0d0e7;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 🎥 Link Video */
 .youfiglio {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #d0d0e7;
-  padding: 5px;
-  font-size: 15px;
+  padding: 8px;
+  font-size: 14px;
   color: #244cb4;
   font-weight: bold;
-}
-.figlioSu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #d0d0e7;
-  padding: 10px;
-  font-weight: bold;
-  font-size: 20px;
-  color: #15a796;
+  text-decoration: none;
 }
 
-.figliotextarea {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #d0d0e7;
-  padding: 10px;
-  font-size: 20px;
-  color: #333;
-  resize: none;
-  border: none;
+.youfiglio:hover {
+  text-decoration: underline;
+}
+
+/* 📱 Adattamento Mobile */
+@media (max-width: 768px) {
+  .genitoreschede {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .inputSettimana {
+    width: 100%;
+  }
+  .eserciziTable {
+    font-size: 12px; /* Riduce leggermente la dimensione del testo */
+  }
+  .bisnonno {
+    margin-top: 14vh; /* Più spazio sotto il menu */
+    padding: 5px;
+    overflow-x: auto;
+  }
+
+  .eserciziTable th,
+  .eserciziTable td {
+    min-width: 80px;
+    padding: 5px;
+  }
+
+  .youfiglio {
+    font-size: 12px;
+  }
 }

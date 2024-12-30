@@ -28,17 +28,17 @@ function Menu(props) {
   return (
     <div className="divLogCre">
       <button className="buttonHome" type="button" onClick={goToHome}>
-        <img class name="imma" src={Home} alt="Home" />
+        <img className="imma" src={Home} alt="Home" />
       </button>
       <button
         className="buttonCreaScheda"
         type="button"
         onClick={handleCreateScheda}
       >
-        <img class name="imma" src={CreaScheda} alt="Crea Scheda" />
+        <img className="imma" src={CreaScheda} alt="Crea Scheda" />
       </button>
       <button className="buttonLogout" type="button" onClick={onLogout}>
-        <img class name="imma" src={Logout} alt="Logout" />
+        <img className="imma" src={Logout} alt="Logout" />
       </button>
     </div>
   );
