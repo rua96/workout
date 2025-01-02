@@ -1,4 +1,3 @@
-/* 🔄 Reset di Base */
 * {
   margin: 0;
   padding: 0;
@@ -12,10 +11,9 @@ body {
   overflow-x: hidden; /* Evita lo scroll orizzontale generale */
 }
 
-/* 📊 Scrollbar Personalizzata */
 .nonno::-webkit-scrollbar {
-  width: 10px; /* Scroll verticale */
-  height: 8px; /* Scroll orizzontale */
+  width: 10px;
+  height: 8px;
 }
 
 .nonno::-webkit-scrollbar-track {
@@ -29,7 +27,6 @@ body {
   border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
-/* 📦 Contenitore Principale */
 .bisnonno {
   display: flex;
   flex-direction: column;
@@ -47,7 +44,6 @@ body {
   box-sizing: border-box;
 }
 
-/* 📑 Selezione Dropdown */
 .genitoreschede {
   display: flex;
   gap: 15px;
@@ -71,7 +67,6 @@ body {
   border-color: #15a796;
 }
 
-/* 📊 Tabella Esercizi */
 .eserciziTableContainer {
   width: 100%;
   overflow-x: auto; /* Scroll orizzontale se necessario */
@@ -108,7 +103,6 @@ body {
   color: #333;
 }
 
-/* 🎥 Link Video */
 .youfiglio {
   display: flex;
   justify-content: center;
@@ -125,7 +119,6 @@ body {
   text-decoration: underline;
 }
 
-/* 📱 Adattamento Mobile */
 @media (max-width: 768px) {
   .genitoreschede {
     flex-direction: column;
@@ -136,10 +129,10 @@ body {
     width: 100%;
   }
   .eserciziTable {
-    font-size: 12px; /* Riduce leggermente la dimensione del testo */
+    font-size: 12px;
   }
   .bisnonno {
-    margin-top: 14vh; /* Più spazio sotto il menu */
+    margin-top: 14vh;
     padding: 5px;
     overflow-x: auto;
   }
