@@ -14,6 +14,8 @@ module.exports = (sequelize, datatypes) => {
     notes: {
       type: datatypes.STRING,
       allowNull: true,
+      unique: false,
+      defaultValue: "N/A",
     },
     rest: {
       type: datatypes.STRING,
