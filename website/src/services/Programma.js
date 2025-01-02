@@ -42,7 +42,7 @@ const esercizi = [
           },
           {
             esercizio: "Plank",
-            link: "https://www.youtube.com/watch?v=N_s9em1xTqU",
+            link: "https://www.youtube.com/watch?v=WUk9rd-rI7Y",
             set: "3 x 30''",
             note: "",
             rest: "1'",
@@ -195,7 +195,7 @@ const esercizi = [
           },
           {
             esercizio: "Plank",
-            link: "https://www.youtube.com/watch?v=N_s9em1xTqU",
+            link: "https://www.youtube.com/watch?v=WUk9rd-rI7Y",
             set: "3 x max",
             note: "",
             rest: "1'",
@@ -362,7 +362,7 @@ const esercizi = [
           },
           {
             esercizio: "Plank",
-            link: "https://www.youtube.com/watch?v=N_s9em1xTqU",
+            link: "https://www.youtube.com/watch?v=WUk9rd-rI7Y",
             set: "3 x 1'/1'30''",
             note: "",
             rest: "1'",
