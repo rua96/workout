@@ -15,7 +15,6 @@ module.exports = (sequelize, datatypes) => {
       type: datatypes.STRING,
       allowNull: true,
       unique: false,
-      defaultValue: "N/A",
     },
     rest: {
       type: datatypes.STRING,
