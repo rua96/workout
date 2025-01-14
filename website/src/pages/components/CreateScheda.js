@@ -23,6 +23,8 @@ function CreateScheda() {
         }
       );
 
+      console.log(response.data);
+
       if (response?.data?.scheda) {
         let schede = response.data.scheda.filter((scheda) => {
           return scheda.lettera === schedaSelezionata;
@@ -68,27 +70,13 @@ function CreateScheda() {
     };
 
     try {
-      if (
-        listaEsercizi.filter((esercizio) => {
-          return esercizio.id != null;
-        }).length > 0
-      ) {
-        await axios.patch(
-          `${process.env.REACT_APP_SERVER_URL}/createscheda`,
-          schedaDaSalvare,
-          {
-            headers: { authToken: localStorage.getItem("AuthToken") },
-          }
-        );
-      } else {
-        await axios.post(
-          `${process.env.REACT_APP_SERVER_URL}/createscheda`,
-          schedaDaSalvare,
-          {
-            headers: { authToken: localStorage.getItem("AuthToken") },
-          }
-        );
-      }
+      await axios.patch(
+        `${process.env.REACT_APP_SERVER_URL}/createscheda`,
+        schedaDaSalvare,
+        {
+          headers: { authToken: localStorage.getItem("AuthToken") },
+        }
+      );
       toast.success("Scheda salvata con successo!");
     } catch (error) {
       console.error("Errore nel salvataggio:", error);
@@ -193,11 +181,22 @@ function CreateScheda() {
                   <td>
                     <button
                       className="buttonRemove"
-                      onClick={() =>
+                      onClick={async () => {
+                        if (esercizio.id) {
+                          await axios.delete(
+                            `${process.env.REACT_APP_SERVER_URL}/createscheda/esercizio/` +
+                              esercizio.id,
+                            {
+                              headers: {
+                                authToken: localStorage.getItem("AuthToken"),
+                              },
+                            }
+                          );
+                        }
                         setListaEsercizi(
                           listaEsercizi.filter((_, i) => i !== index)
-                        )
-                      }
+                        );
+                      }}
                     >
                       Rimuovi
                     </button>

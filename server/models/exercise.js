@@ -28,9 +28,10 @@ module.exports = (sequelize, datatypes) => {
       unique: false,
     },
     status: {
-      type: datatypes.STRING,
+      type: datatypes.BOOLEAN,
       allowNull: true,
       unique: false,
+      defaultValue: true,
     },
   });
 

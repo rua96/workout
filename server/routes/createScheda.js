@@ -4,69 +4,75 @@ const { gymTab, exercise } = require("../models");
 const { validateToken } = require("../middlewares/Authentication");
 const { Op } = require("sequelize");
 
-router.post("/", validateToken, async (req, res) => {
-  const { userId, scheda, settimana, esercizi } = req.body;
+// router.post("/", validateToken, async (req, res) => {
+//   const { userId, scheda, settimana, esercizi } = req.body;
 
-  console.log("Dati ricevuti:", { userId, scheda, settimana, esercizi });
+//   console.log("Dati ricevuti:", { userId, scheda, settimana, esercizi });
 
-  try {
-    // Creazione della scheda
-    // Determina gli esercizi specifici in base alla lettera della scheda (A, B, C)
-    let eserciziPersonalizzati;
-    if (scheda === "A") {
-      eserciziPersonalizzati = esercizi.filter((e) => e.tipo === "forza");
-    } else if (scheda === "B") {
-      eserciziPersonalizzati = esercizi.filter((e) => e.tipo === "resistenza");
-    } else if (scheda === "C") {
-      eserciziPersonalizzati = esercizi.filter((e) => e.tipo === "mobilità");
-    } else {
-      return res.status(400).json({ error: "Tipo di scheda non valido." });
-    }
+//   try {
+//     // Creazione della scheda
+//     // Determina gli esercizi specifici in base alla lettera della scheda (A, B, C)
+//     let eserciziPersonalizzati;
+//     if (scheda === "A") {
+//       eserciziPersonalizzati = esercizi.filter((e) => e.tipo === "forza");
+//     } else if (scheda === "B") {
+//       eserciziPersonalizzati = esercizi.filter((e) => e.tipo === "resistenza");
+//     } else if (scheda === "C") {
+//       eserciziPersonalizzati = esercizi.filter((e) => e.tipo === "mobilità");
+//     } else {
+//       return res.status(400).json({ error: "Tipo di scheda non valido." });
+//     }
 
-    // Salva la scheda personalizzata
-    let gymtabella = await gymTab.create({
-      lettera: scheda,
-      userId: userId,
-    });
+//     let scheda = await gymTab.findOne({
+//       where: { userId: userId, lettera: scheda}
+//     })
 
-    // Verifica se "esercizi" è un array valido e non vuoto
-    if (!Array.isArray(esercizi) || esercizi.length === 0) {
-      return res.status(400).json({ message: "Esercizi non validi" });
-    }
+//     if(!scheda) {
+//       // Salva la scheda personalizzata
+//       let gymtabella = await gymTab.create({
+//         lettera: scheda,
+//         userId: userId,
+//       });
+//     }
 
-    // Ciclo per creare gli esercizi
-    for (let i = 0; i < esercizi.length; i++) {
-      // Creazione dell'esercizio
-      const exerciseCreated = await exercise.create({
-        esercizio: esercizi[i].esercizio,
-        setReps: esercizi[i].setReps,
-        notes: esercizi[i].note,
-        rest: esercizi[i].rest,
-        gymTabId: gymtabella.id,
-        status: "active",
-      });
+//     // Verifica se "esercizi" è un array valido e non vuoto
+//     if (!Array.isArray(esercizi) || esercizi.length === 0) {
+//       return res.status(400).json({ message: "Esercizi non validi" });
+//     }
 
-      // Logga ogni esercizio creato
-      console.log("Esercizio creato:", exerciseCreated);
-    }
+//     // Ciclo per creare gli esercizi
+//     for (let i = 0; i < esercizi.length; i++) {
+//       // Creazione dell'esercizio
+//       const exerciseCreated = await exercise.create({
+//         esercizio: esercizi[i].esercizio,
+//         setReps: esercizi[i].setReps,
+//         notes: esercizi[i].note,
+//         rest: esercizi[i].rest,
+//         gymTabId: gymtabella.id,
+//         status: true,
+//       });
 
-    // Risposta positiva al client
-    return res.status(201).json({
-      message: "Scheda e esercizi creati con successo",
-      gymTab: gymtabella,
-    });
-  } catch (error) {
-    console.error(
-      "Errore durante la creazione della scheda o degli esercizi:",
-      error
-    );
-    // Risposta con errore se qualcosa va storto
-    return res.status(500).json({
-      message: "Errore durante la creazione della scheda",
-      error: error.message,
-    });
-  }
-});
+//       // Logga ogni esercizio creato
+//       console.log("Esercizio creato:", exerciseCreated);
+//     }
+
+//     // Risposta positiva al client
+//     return res.status(201).json({
+//       message: "Scheda e esercizi creati con successo",
+//       gymTab: gymtabella,
+//     });
+//   } catch (error) {
+//     console.error(
+//       "Errore durante la creazione della scheda o degli esercizi:",
+//       error
+//     );
+//     // Risposta con errore se qualcosa va storto
+//     return res.status(500).json({
+//       message: "Errore durante la creazione della scheda",
+//       error: error.message,
+//     });
+//   }
+// });
 
 router.get("/:userId", validateToken, async (req, res) => {
   //qui prendo gli esercizi
@@ -82,9 +88,7 @@ router.get("/:userId", validateToken, async (req, res) => {
         separate: true, // Esegue una query separata per gli esercizi
         order: [["createdAt", "ASC"]], // Ordina per data di creazione in ordine crescente
         where: {
-          status: {
-            [Op.ne]: "deleted",
-          },
+          status: true,
         },
       },
     ],
@@ -107,8 +111,13 @@ router.patch("/", validateToken, async (req, res) => {
 
     // Se la scheda non esiste, restituisci un errore
     if (!schedaCreata) {
-      return res.status(404).json({ message: "Scheda non trovata" });
+      schedaCreata = await gymTab.create({
+        lettera: scheda,
+        userId: userId,
+      });
     }
+
+    console.log("kdslakfl", esercizi);
 
     // Aggiorna o crea esercizi
     for (let esercizio of esercizi) {
@@ -120,7 +129,7 @@ router.patch("/", validateToken, async (req, res) => {
             setReps: esercizio.setReps,
             notes: esercizio.notes,
             rest: esercizio.rest,
-            status: "active",
+            status: true,
           },
           {
             where: { id: esercizio.id },
@@ -134,7 +143,7 @@ router.patch("/", validateToken, async (req, res) => {
           notes: esercizio.notes,
           rest: esercizio.rest,
           gymTabId: schedaCreata.id,
-          status: "active",
+          status: true,
         });
       }
     }
@@ -176,7 +185,7 @@ router.delete("/esercizio/:id", validateToken, async (req, res) => {
     // Cancella l'esercizio
     await exercise.update(
       {
-        status: "deleted",
+        status: false,
       },
       {
         where: { id: id },
