@@ -70,7 +70,6 @@ function Login(props) {
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <h4 className="forgotPassword">Password dimenticata? </h4>
         </div>
         <button className="buttonLogin" onClick={onLogin}>
           LOGIN
