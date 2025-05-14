@@ -18,7 +18,7 @@ const corsOptions = {
       callback(new Error("Non autorizzato"), false); // Rifiuta l'origine
     }
   },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
   allowedHeaders: ["Content-Type", "Authorization", "authtoken"],
   credentials: true, // Se utilizzi cookie o sessioni
 };
