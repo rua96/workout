@@ -19,7 +19,7 @@ const corsOptions = {
     }
   },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization", "authtoken"],
   credentials: true, // Se utilizzi cookie o sessioni
 };
 
