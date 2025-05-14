@@ -3,23 +3,39 @@ const server = express(); // usiamo server perchè è il nome con il quale abbia
 const cors = require("cors"); // per poter usare server e website nello stesso pc. In questa riga lo stiamo importando dopo aver scaricato la libreria (npm i cors)
 const database = require("./models"); // sincronizza le nostre tabelle con il database
 
-server.use(cors()); // aggiungiamo cors al server
-server.use(express.json()); //per dire al server che usiamo json
+// Definisci le origini consentite
+const allowedOrigins = [
+  "https://workout-ten-lake.vercel.app", // Frontend su Vercel
+  "https://workout-6xoo.onrender.com", // Backend su Render
+];
 
-const usersRouter = require("./routes/users"); //sto definendo il Router nel server
+// Configura CORS per consentire solo le origini specificate
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true); // Consenti l'origine
+    } else {
+      callback(new Error("Non autorizzato"), false); // Rifiuta l'origine
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // Se utilizzi cookie o sessioni
+};
+
+server.use(cors(corsOptions)); // Applica la configurazione CORS
+server.use(express.json()); // Per il parsing del corpo delle richieste JSON
+
+// Definisci i router
+const usersRouter = require("./routes/users");
 server.use("/users", usersRouter);
-const createSchedaRouter = require("./routes/createScheda"); //sto definendo il Router nel server
+
+const createSchedaRouter = require("./routes/createScheda");
 server.use("/createScheda", createSchedaRouter);
 
-// Sincronizzazione del database con Sequelize
+// Sincronizza il database e avvia il server
 database.sequelize.sync().then(() => {
   server.listen(5555, () => {
-    // è una funzione sempre di express, e stiamo mettendo il server in stato di ascolto e gli passiamo port ( nel nostro caso 5555) , ()=>{}  questo vuol dire che è una funzione
-    console.log("App is running on PORT 5555");
+    console.log("App in esecuzione sulla porta 5555");
   });
 });
-
-// per far partire il server, serve che scriviamo una riga nel package.json :   "start":"node index.js" ,
-
-// per il database, installiamo libreria sequelize : nel server facciamo  -> npm i sequelize sequelize-cli mysql2  .
-//  poi -> npx sequelize init .. Esegue pacchetti npm senza doverli installare globalmente. In questo caso, esegue sequelize senza richiedere l’installazione globale del pacchetto.
