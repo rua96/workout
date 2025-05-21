@@ -1,7 +1,7 @@
 const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+=[\]{}|\\:;"'<>,.?/~`-])[A-Za-z\d!@#$%^&*()_+=[\]{}|\\:;"'<>,.?/~`-]{8,30}$/;
 const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-const usernameRegex = /^[A-Za-z\d]{4,12}$/;
+const usernameRegex = /^.{4,12}$/;
 
 const Validation = {
   isValidPassword(input) {

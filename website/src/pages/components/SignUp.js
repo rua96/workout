@@ -2,10 +2,26 @@ import "../../styles/SignUp.css";
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function SignUp(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const showPasswordInfo = () => {
+    toast.info(
+      "La password deve contenere almeno 8 caratteri, includere lettere maiuscole, numeri e simboli.",
+      {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        style: { background: "#333", color: "#fff" },
+      }
+    );
+  };
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -39,13 +55,20 @@ function SignUp(props) {
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <h4 className="hpasswordsignup">password : </h4>
-          <input
-            className="inputPassword"
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <h4 className="hpasswordsignup">
+            password :{" "}
+            <button className="spanPass" onClick={showPasswordInfo}>
+              ℹ️
+            </button>{" "}
+          </h4>
+          <div className="infoPass">
+            <input
+              className="inputPassword"
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
         </div>
         <button className="buttonSignUp" onClick={onSignUp}>
           SIGN UP

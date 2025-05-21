@@ -12,6 +12,22 @@
   margin: 0;
   padding: 0;
 }
+.infoPass {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.spanPass {
+  background: transparent;
+  margin-left: 8px;
+  position: relative;
+  top: -2px;
+}
+.infoPass span {
+  cursor: pointer;
+  margin-left: 8px;
+  font-size: 20px;
+}
 
 .mainTitle {
   font-family: "Inter", sans-serif;
@@ -79,6 +95,7 @@
 /* Stile per l'input Password */
 .inputPassword {
   width: 100%;
+  padding-right: 40px; /* Spazio extra per l'icona */
   height: 30px;
   margin: 10px 0;
   padding: 20px;
