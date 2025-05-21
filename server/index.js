@@ -5,15 +5,10 @@ const database = require("./models"); // sincronizza le nostre tabelle con il da
 
 // Definisci le origini consentite
 const allowedOrigins = [
-  "https://workout-andrea.vercel.app", // Frontend su Vercel
-  "https://workout-2-qp31.onrender.com", // Backend su Render
-  "workout-andrea-git-main-andreas-projects-13e88ddf.vercel.app",
-  "workout-andrea-l3p6uy09a-andreas-projects-13e88ddf.vercel.app",
-  "https://workout-2-qp31.onrender.com/users",
-  "https://workout-three-cyan.vercel.app",
-  "https://workout-2-qp31.onrender.com/users/login",
-  "https://workout-2-qp31.onrender.com/users/details",
-  "https://workout-2-qp31.onrender.com/users/auth",
+  "https://workout-andrea.vercel.app", // frontend 1
+  "https://workout-three-cyan.vercel.app", // frontend 2
+  "https://workout-andrea-git-main-andreas-projects-13e88ddf.vercel.app",
+  "https://workout-andrea-l3p6uy09a-andreas-projects-13e88ddf.vercel.app",
 ];
 
 // Configura CORS per consentire solo le origini specificate
