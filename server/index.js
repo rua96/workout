@@ -11,6 +11,9 @@ const allowedOrigins = [
   "workout-andrea-l3p6uy09a-andreas-projects-13e88ddf.vercel.app",
   "https://workout-2-qp31.onrender.com/users",
   "https://workout-three-cyan.vercel.app",
+  "https://workout-2-qp31.onrender.com/users/login",
+  "https://workout-2-qp31.onrender.com/users/details",
+  "https://workout-2-qp31.onrender.com/users/auth",
 ];
 
 // Configura CORS per consentire solo le origini specificate
