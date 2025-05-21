@@ -36,8 +36,17 @@ const createSchedaRouter = require("./routes/createScheda");
 server.use("/createScheda", createSchedaRouter);
 
 // Sincronizza il database e avvia il server
-database.sequelize.sync().then(() => {
+/*database.sequelize.sync().then(() => {
   server.listen(5555, () => {
     console.log("App in esecuzione sulla porta 5555");
+  });
+});
+*/
+// Avviamo il server sulla porta dinamica fornita da Render, o 5555 in locale
+const PORT = process.env.PORT || 5555;
+
+database.sequelize.sync().then(() => {
+  server.listen(PORT, () => {
+    console.log(`✅ Server avviato sulla porta ${PORT}`);
   });
 });
