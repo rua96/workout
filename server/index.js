@@ -5,6 +5,7 @@ const database = require("./models"); // sincronizza le nostre tabelle con il da
 
 // Definisci le origini consentite
 const allowedOrigins = [
+  "srv-d3i23vpr0fns73cpioeg"
   "workout-6zdwib1zw-andreas-projects-13e88ddf.vercel.app/:1",
   "https://workout-2-qp31.onrender.com/users",
   "https://workout-6zdwib1zw-andreas-projects-13e88ddf.vercel.app",
