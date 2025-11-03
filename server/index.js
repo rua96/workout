@@ -5,6 +5,8 @@ const database = require("./models"); // sincronizza le nostre tabelle con il da
 
 // Definisci le origini consentite
 const allowedOrigins = [
+  "https://workout-5.onrender.com",
+  "https://workout-5.onrender.com/users",
   "https://workout-4.onrender.com/users",
   "https://workout-three-cyan.vercel.app",
   "https://workout-4.onrender.com",
